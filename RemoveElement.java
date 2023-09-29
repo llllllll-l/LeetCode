@@ -10,7 +10,7 @@ public class RemoveElement {
             System.out.println(i);
         }
     }
-
+    // temp
     private static int[] removeElement(int[] nums, int val) {
         int[] newArray = new int[nums.length];
         int index = 0;

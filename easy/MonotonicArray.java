@@ -1,3 +1,4 @@
+package easy;
 // 896
 public class MonotonicArray {
     public static void main(String[] args) {

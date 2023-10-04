@@ -1,3 +1,4 @@
+package medium;
 // 34
 public class FindFirstAndLastPosition {
     public static void main(String[] args) {

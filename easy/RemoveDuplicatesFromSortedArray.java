@@ -1,3 +1,4 @@
+package easy;
 // 26
 public class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {

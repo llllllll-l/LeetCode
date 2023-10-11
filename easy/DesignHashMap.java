@@ -84,10 +84,10 @@ public class DesignHashMap<K, V> {
 
     
     public static void main(String[] args) {
-        DesignHashMap<Integer, Integer> map = new DesignHashMap<>();
+        DesignHashMap<Object, Object> map = new DesignHashMap<>();
 
         map.put(1,2);
-        map.put(2, 2);
+        map.put(2, "a");
         map.put(10,2);
         System.out.println(map.get(2));
         map.put(2, 3);

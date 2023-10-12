@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
+// own insensitive 
 public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
 
     private class Node {
@@ -14,8 +15,20 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
             this.key = key;
             this.left = this.right = null;
         }
-    }
 
+        // Taken from https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram-in-java
+        public StringBuilder toString(StringBuilder prefix, boolean isTail, StringBuilder sb) {
+            if(right!=null) {
+                right.toString(new StringBuilder().append(prefix).append(isTail ? "│   " : "    "), false, sb);
+            }
+            sb.append(prefix).append(isTail ? "└── " : "┌── ").append(key.toString()).append("\n");
+            if(left!=null) {
+                left.toString(new StringBuilder().append(prefix).append(isTail ? "    " : "│   "), true, sb);
+            }
+            return sb;
+        }
+        // 
+    }
 
     private Node root;
     private int size;
@@ -150,6 +163,14 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
         return removeKthLargest(node.left, k, count);
     }
 
+    // Taken from https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram-in-java
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        return root.toString(new StringBuilder(), true, result).toString();
+    }
+    //
+
     @Override
     public Iterator<K> iterator() {
         // TODO Auto-generated method stub
@@ -223,7 +244,6 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
         }
     }
     
-
     public Iterator<K> postOrderIterator() {
         return new PostOrderIterator();
     }
@@ -260,8 +280,6 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
         }
     }
 
-   
-
     public static void main(String[] args) {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
         System.out.println("Adding the following integers in order: 3, 1, 7, 2, 4, 8, 6, 9");
@@ -284,6 +302,8 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
         bst.add(9);
         bst.add(10);*/
         
+        System.out.println("BST Tree Structure:");
+        System.out.println(bst);
 
         System.out.println("In-order traversal: ");
         for (Integer key : bst) {

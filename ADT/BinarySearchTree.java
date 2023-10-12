@@ -291,16 +291,16 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
         bst.add(8);
         bst.add(6);
         bst.add(9);
-        /* bst.add(1);
-        bst.add(2);
-        bst.add(3);
-        bst.add(4);
-        bst.add(5);
-        bst.add(6);
-        bst.add(7);
-        bst.add(8);
-        bst.add(9);
-        bst.add(10);*/
+        // bst.add(1);
+        // bst.add(2);
+        // bst.add(3);
+        // bst.add(4);
+        // bst.add(5);
+        // bst.add(6);
+        // bst.add(7);
+        // bst.add(8);
+        // bst.add(9);
+        // bst.add(10);
         
         System.out.println("BST Tree Structure:");
         System.out.println(bst);

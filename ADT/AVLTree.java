@@ -1,13 +1,16 @@
 package ADT;
 
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
+
+
 // own insensitive 
 public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
     
-    private class AVLNode<K> {
+    private static class AVLNode<K> {
         K key;
         AVLNode<K> left, right;
         int height;
@@ -16,18 +19,30 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
             this.key = key;
             this.height = 1;
         }
+
+        // Taken from https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram-in-java
+        public StringBuilder toString(StringBuilder prefix, boolean isTail, StringBuilder sb) {
+            if(right!=null) {
+                right.toString(new StringBuilder().append(prefix).append(isTail ? "│   " : "    "), false, sb);
+            }
+            sb.append(prefix).append(isTail ? "└── " : "┌── ").append(key.toString()).append("\n");
+            if(left!=null) {
+                left.toString(new StringBuilder().append(prefix).append(isTail ? "    " : "│   "), true, sb);
+            }
+            return sb;
+        }
+        // 
     }
 
-    private AVLNode<K> root;
+    public AVLNode<K> root;
 
-    private int height(AVLNode<K> t) {
-        return t == null ? 0 : t.height;
-    }
+    
 
     public void insert(K key) {
         root = insert(root, key);
     }
     
+    // helper
     private AVLNode<K> insert(AVLNode<K> node, K key) {
         if (node == null) {
             return new AVLNode<K>(key); // setting a root
@@ -35,12 +50,12 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
 
         if (key.compareTo(node.key) < 0) {
             node.left = insert(node.left, key);
-        } else if (key.compareTo(node.right) > 0) {
+        } else if (key.compareTo(node.key) > 0) {
             node.right = insert(node.right, key);
         } else {
             return node;
         }
-
+        
         // updating tree height
         updateHeight(node);
         
@@ -68,7 +83,7 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
         root = delete(root, key); 
     }
 
-   
+    // helper
     private AVLNode<K> delete(AVLNode<K> node, K key) {
         if (node == null) {
             return node;
@@ -104,14 +119,15 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
         int balance = getBalance(node);
 
         if (balance > 1) {
-            if (key.compareTo(node.left.key) < 0) {
-                return rightRotation(node);
+            if (key.compareTo(node.left.key) >= 0) {
+                return rightRotation(node); // singel right rotation
             } else {
                 node.left = leftRotation(node.left); // double left-right rotation | node.left = k3.left
                 return rightRotation(node);
             }
-        } else if (balance < -1) {
-            if (key.compareTo(node.right.key) > 0) {
+        }
+        if (balance < -1) {
+            if (key.compareTo(node.right.key) <= 0) {
                 return leftRotation(node);
             } else {
                 node.right = rightRotation(node.right);
@@ -122,7 +138,10 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
        
     }
 
-    
+    private int height(AVLNode<K> t) {
+        return t == null ? 0 : t.height;
+    }
+
     private AVLNode<K> minValueNode(AVLNode<K> node) {
         AVLNode<K> current = node;
         while (current.left != null) {
@@ -138,33 +157,34 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
     }
 
     private AVLNode<K> leftRotation(AVLNode<K> k2) {
-        if (k2.right != null || k2.left != null) {
-            AVLNode<K> k1 = k2.right;
-            k2.right = k1.left;
-            k1.left = k2;
-            updateHeight(k2);
-            updateHeight(k1);
-            return k1;
-        }
-        return null;
-        
+        AVLNode<K> k1 = k2.right;
+        k2.right = k1.left;
+        k1.left = k2;
+        updateHeight(k2);
+        updateHeight(k1);
+        return k1;
     }
 
     private AVLNode<K> rightRotation(AVLNode<K> k2) {
-        if (k2.left != null || k2.right != null) {
-            AVLNode<K> k1 = k2.left;
-            k2.left = k1.right;
-            k1.right = k2;
-            updateHeight(k2);
-            updateHeight(k1);
-            return k1;
-        }
-        return null;
+        AVLNode<K> k1 = k2.left;
+        k2.left = k1.right;
+        k1.right = k2;
+        updateHeight(k2);
+        updateHeight(k1);
+        return k1;
     }
 
     private int getBalance(AVLNode<K> node) {
         return node == null ? 0 : height(node.left) - height(node.right); 
     }
+
+    // Taken from https://stackoverflow.com/questions/4965335/how-to-print-binary-tree-diagram-in-java
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        return root.toString(new StringBuilder(), true, result).toString();
+    }
+    //
 
     @Override
     public Iterator<K> iterator() {
@@ -281,21 +301,39 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
 
 
     public static void main(String[] args) {
-        AVLTree<Integer> avlTree2 = new AVLTree<>();
-        avlTree2.insert(10);
-        avlTree2.insert(20);
-        avlTree2.insert(30);
-        avlTree2.insert(40);
-        avlTree2.insert(50);
+        AVLTree<Integer> avlTree = new AVLTree<>();
+        avlTree.insert(3);
+        avlTree.insert(1);
+        avlTree.insert(7);
+        avlTree.insert(2);
+        avlTree.insert(4);
+        avlTree.insert(8);
+        avlTree.insert(6);
+        avlTree.insert(9);
 
-        System.out.println("In-order traversal of the AVL tree:");
-        Iterator<Integer> inOrder = avlTree2.iterator();
+        System.out.println("AVLTree Structure:");
+        System.out.println(avlTree);
+
+        System.out.println("In-order traversal AVLtree:");
+        Iterator<Integer> inOrder = avlTree.iterator();
         while (inOrder.hasNext()) {
-            System.out.println(inOrder.next() + " ");
+            System.out.print(inOrder.next() + " ");
+        }
+
+        System.out.println();
+
+        System.out.println("Pre-order traversal AVLTree:");
+        Iterator<Integer> preOrder = avlTree.preOrderIterator();
+        while (preOrder.hasNext()) {
+            System.out.print(preOrder.next() + " ");
         }
         
-        
-    }
+        System.out.println();
 
-	
+        System.out.println("Post-order traversal AVLTree:");
+        Iterator<Integer> postOrder = avlTree.postOrderIterator();
+        while (postOrder.hasNext()) {
+            System.out.print(postOrder.next() + " ");
+        }
+    }
 }

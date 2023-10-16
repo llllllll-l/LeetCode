@@ -61,7 +61,7 @@ public class MergeSort {
             arr[rightEnd] = tempArr[rightEnd];
         }
 
-        System.out.println("Step: "+iteartion);
+        System.out.println("Merg Call: "+iteartion);
         for (int i : arr) {
             System.out.print(i+ " ");
         }

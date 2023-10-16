@@ -59,6 +59,12 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
         return size;
     }
 
+    public void addAll(K[] arr) {
+        for (K key : arr) {
+            add(key);
+        }
+    }
+
     public void add(K key) {
         root = add(root, key);
     }
@@ -283,13 +289,15 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
     public static void main(String[] args) {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
         System.out.println("Adding the following integers in order: 3, 1, 7, 2, 4, 8, 6, 9");
-        bst.add(3);
-        bst.add(1);
-        bst.add(4);
-        bst.add(6);
-        bst.add(9);
-        bst.add(2);
-        bst.add(5);
+        Integer[] arr = {39, 59, 35, 79, 73, 11, 48, 33, 91, 40, 73, 7, 63, 2, 89, 13, 37, 24, 6, 74, 12, 18, 67, 29, 35, 84, 72, 56, 11, 86, 79, 55, 48, 83, 68, 49, 27, 27, 69, 7, 14, 18, 99, 87, 49, 10, 86, 77, 25, 28, 3, 29, 41, 54, 10, 41, 49, 3, 84, 61, 60, 71, 24, 37, 3, 3, 32, 65, 29, 71, 74, 21, 26, 86, 85, 50, 69, 74, 66, 57, 89, 21, 94, 9, 13, 7, 22, 15, 23, 3, 60, 43, 21, 38, 40, 35, 21, 4, 8, 67};
+        bst.addAll(arr);
+        // bst.add(3);
+        // bst.add(1);
+        // bst.add(4);
+        // bst.add(6);
+        // bst.add(9);
+        // bst.add(2);
+        // bst.add(5);
         
         // bst.add(1);
         // bst.add(2);
@@ -305,10 +313,12 @@ public class BinarySearchTree<K extends Comparable<K>> implements Iterable<K> {
         System.out.println("BST Tree Structure:");
         System.out.println(bst);
 
-        bst.remove(3);
+        System.out.println(bst.contaions(45));
 
-        System.out.println("BST Tree Structure:");
-        System.out.println(bst);
+        // bst.remove(3);
+
+        // System.out.println("BST Tree Structure:");
+        // System.out.println(bst);
 
         System.out.println("In-order traversal: ");
         for (Integer key : bst) {

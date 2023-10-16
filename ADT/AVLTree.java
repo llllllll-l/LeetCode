@@ -294,9 +294,6 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
         }
 
     }
-
-
-
     public static void main(String[] args) {
         AVLTree<Integer> avlTree = new AVLTree<>();
         // avlTree.insert(3);
@@ -316,9 +313,6 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
         avlTree.insert(6);
         avlTree.insert(7);
         avlTree.insert(8);
-        
-
-
 
         System.out.println("AVLTree Structure:");
         System.out.println(avlTree);

@@ -40,8 +40,14 @@ public class SplayTree<K extends Comparable<K>> implements Iterable<K> {
         return null;
     }
 
-    private void zigRotation(SplayNode<K> root, K key) {
+    private void zigRotation(SplayNode<K> k2) { // left rotation 
+        SplayNode<K> k1 = k2.left;
+        k2.right = k1.left;
+        k1.left = k2;
+        splay(); 
+    }
 
+    private void splay() {
     }
 
     @Override

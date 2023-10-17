@@ -306,13 +306,12 @@ public class AVLTree<K extends Comparable<K>> implements Iterable<K>{
         // avlTree.insert(9);
         System.out.println("Inserting 1, 2, 3, 4, 5, 6, 7, 8 into the AVL Tree in that order:");
         avlTree.insert(1);
-        avlTree.insert(2);
         avlTree.insert(3);
-        avlTree.insert(4);
+        avlTree.insert(7);
         avlTree.insert(5);
         avlTree.insert(6);
-        avlTree.insert(7);
-        avlTree.insert(8);
+        avlTree.insert(9);
+
 
         System.out.println("AVLTree Structure:");
         System.out.println(avlTree);

@@ -1,4 +1,4 @@
-public class coinChange {
+public class CoinChange {
     public static void main(String[] args) {
         int payment = 17;
         int[] coins = {1, 5, 8, 10};

@@ -79,14 +79,14 @@ public class SplayTree<K extends Comparable<K>> implements Iterable<K> {
     //     return splay(node, key);
     // }
 
-    private SplayNode<K> zig(SplayNode<K> k2) { // left rotation 
+    private SplayNode<K> zig(SplayNode<K> k2) { // right rotation 
         SplayNode<K> k1 = k2.left;
         k2.left = k1.right;
         k1.right = k2;
         return k1;
     }
 
-    private SplayNode<K> zag(SplayNode<K> k2) { // right rotation
+    private SplayNode<K> zag(SplayNode<K> k2) { // left rotation
         SplayNode<K> k1 = k2.right;
         k2.right = k1.left;
         k1.left = k2;

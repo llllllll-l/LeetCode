@@ -6,14 +6,14 @@ const screen = document.querySelector('.screen');
 
 function btnClick(value) {
     if (isNaN(value)) { /** is number = isNaN */
-        handleSymbol(value);
+        symbolHandler(value);
     } else {
-        handleNum(value);
+        numHandler(value);
     }
     screen.innerText = buffer;
 }
 
-function handleSymbol(symbol) {
+function symbolHandler(symbol) {
     switch(symbol) {
         case 'C':
             buffer = '0';
@@ -39,14 +39,14 @@ function handleSymbol(symbol) {
         case '-':
         case '×':
         case '÷':
-            handleMath(symbol);
+            mathHandler(symbol);
             break;
     }
 }
 
 
 
-function handleMath(symbol) {
+function mathHandler(symbol) {
     if (buffer === '0') {
         return
     }
@@ -77,7 +77,7 @@ function flushOpp(intBuffer) {
     }
 }
 
-function handleNum(numberString) {
+function numHandler(numberString) {
     if (buffer === '0') {
         buffer = numberString;
     } else {

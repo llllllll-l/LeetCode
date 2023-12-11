@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root{
+    --red: #e22928;
+    --yellow: #ff8b2f;
+    --yellow-a: #cc5c00;
+    --white: #fff;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    background-image: linear-gradient(to right, var(--red), var(--yellow));
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    height: inherit;
+    justify-content: center;
+}
+
+.wrapper {
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+    color: #232323;
+    background: rgba(255, 255, 255, 0.3);
+    width: 400px;
+    height: 540px;
+    padding: 20px 35px;
+}
+
+.screen {
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.5);
+    color: #232323;
+    font-size: 35px;
+    overflow: auto;
+    padding: 20px;
+    text-align: right;
+}
+
+.calc-btn-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+}
+
+.calc-btn {
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.15);
+    color: #232323;
+    width: 20%;
+    height: 65px;
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+.calc-btn:last-child {
+    color: var(--white);
+    background: var(--yellow-a);
+    border: none;
+}
+
+.calc-btn:hover {
+    background-color: inherit;
+    
+}
+
+.calc-btn:active {
+    background-color: aliceblue;
+}
+
+.double {
+    width: 47%;
+}
+
+.triple {
+    width: 73%;
+}
+
+
+
+
+
+

@@ -36,9 +36,10 @@ function symbolHandler(symbol) {
             }
             break;
         case '+':
-        case '-':
+        case '−':
         case '×':
         case '÷':
+           
             mathHandler(symbol);
             break;
     }
@@ -66,7 +67,7 @@ function mathHandler(symbol) {
 function flushOpp(intBuffer) {
     if (prevOpp === '+') {
         runningTotal += intBuffer;
-    } else if (prevOpp === '-') {
+    } else if (prevOpp === '−') {
         runningTotal -= intBuffer;
     } else if (prevOpp === '×') {
         runningTotal *= intBuffer;

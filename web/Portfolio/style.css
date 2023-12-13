@@ -211,3 +211,13 @@ aside .sidebar .message-count {
     border-radius: var(--border-radius-1);
 }
 
+
+main > * {
+    display: none;
+}
+
+main > .active,
+main > .acrive *{
+    display: block;
+}
+

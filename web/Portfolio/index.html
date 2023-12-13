@@ -26,56 +26,56 @@
             </div>
 
             <div class="sidebar">
-                <a href="#">
+                <a href="#" data-target="dashboard">
                     <span class="material-symbols-outlined">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="#">
+                <a href="#" data-target="users">
                     <span class="material-symbols-outlined">
                         person_outline
                     </span>
                     <h3>Users</h3>
                 </a>
-                <a href="#">
+                <a href="#" data-target="history">
                     <span class="material-symbols-outlined">
                         receipt_long
                     </span>
                     <h3>History</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="#" class="active" data-target="analytics">
                     <span class="material-symbols-outlined">
                         insights
                     </span>
                     <h3>Analytics</h3>
                 </a>
-                <a href="#">
+                <a href="#" data-target="tickets">
                     <span class="material-symbols-outlined">
                         mail_outline
                     </span>
                     <h3>Tickets</h3>
                     <span class="message-count">27</span>
                 </a>
-                <a href="#">
+                <a href="#" data-target="sale-list">
                     <span class="material-symbols-outlined">
                         inventory
                     </span>
                     <h3>Sale List</h3>
                 </a>
-                <a href="#">
+                <a href="#" data-target="reports">
                     <span class="material-symbols-outlined">
                         report
                     </span>
                     <h3>Reports</h3>
                 </a>
-                <a href="#">
+                <a href="#" data-target="settings">
                     <span class="material-symbols-outlined">
                         settings
                     </span>
                     <h3>Settings</h3>
                 </a>
-                <a href="#">
+                <a href="#" data-target="add-user">
                     <span class="material-symbols-outlined">
                         add
                     </span>
@@ -93,6 +93,28 @@
 
         <!-- End of Sidebar -->
         <!-- Main content -->
+        <main>
+            <div class="analytics active" id="analytics">
+                <h1>Analytics</h1>
+                <div class="analyse">
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$786</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history" id="history">
+                <h1>History</h1>
+            </div>
+            
+        </main>
+
+        <!-- End Main content -->
     </div>
 
     <script src="script.js"></script>

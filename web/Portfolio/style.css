@@ -1,8 +1,213 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 
+:root {
+    --clr-white: #fff;
+    --clr-info-dark: #7d8da1;
+    --clr-dark: #363949;
+    --clr-light: rgba(132, 139, 200, 0.2);
+    --clr-backgound: #f6f6f9;
+    --clr-red: #e22928;
+    --clr-yellow: #ff8b2f;
+    
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.5rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 2rem;
+    --g-padding: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--clr-light);
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
 }
+
+.dark-mode-variables {
+    --clr-backgound: #181a1e;
+    --clr-white: #202528;
+    --clr-dark: #edeffd;
+    --clr-dark-veriant: #a3bdcc;
+    --clr-light: rgba(0,0,0,0.5);
+    --box-shadow: 0 2rem 3rem var(--clr-light); 
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow: hidden;
+    color: var(--clr-dark);
+    background-color: var(--clr-backgound);
+}
+
+a {
+    color: var(--clr-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+
+small {
+    font-size: 0.76rem;
+}
+
+p {
+    color: var(--clr-dark-veriant);
+}
+
+b {
+    color: var(--clr-dark);
+}
+
+.text-muted {
+    color: var(--clr-info-dark);
+}
+
+.primary {
+    color: var(--clr-red);
+}
+
+.danger {
+    color: var(--clr-yellow);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 12rem auto 23rem; /* Free columns one at 12rem middle aouto and right 23rem*/
+    width: 95%;
+    margin: 0 auto;
+    gap: 1.8rem;
+}
+
+aside {
+    height: 100vh;
+}
+
+aside .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.4rem;
+}
+
+aside .toggle .logo {
+    display: flex;
+    gap: 0.5rem;
+}
+
+aside .toggle .logo img {
+    width: 3rem;
+    height: 3rem;
+}
+
+aside .toggle .close {
+    padding-right: 1rem;
+    display: none;
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-white);
+    box-shadow: var(--box-shadow);
+    border-radius: 15px;
+    height: 88vh;
+    position: relative;
+    top: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar:hover {
+    box-shadow: none
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: center;
+    color: var(--clr-info-dark);
+    height: 3.7rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 1.9rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+
+aside .sidebar a.active {
+    width: 100%;
+    color: var(--clr-dark);
+    background-image: linear-gradient(to right, var(--clr-red), var(--clr-yellow));
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--clr-dark);
+}
+
+aside .sidebar a.active span {
+    color: var(--clr-dark);
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+    color: var(--clr-dark);
+}
+
+aside .sidebar a:hover span {
+    margin-left: 0.6rem;
+}
+
+aside .sidebar .message-count {
+    background-color: var(--clr-yellow);
+    padding: 2px 6px;
+    font-size: 12px;
+    color: var(--clr-dark);
+    border-radius: var(--border-radius-1);
+}
+

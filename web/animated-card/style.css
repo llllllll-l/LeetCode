@@ -98,6 +98,10 @@ input + label {
     transition: all 0.3s ease-out;
 }
 
+input[type="radio"] {
+    display: none;
+}
+
 input:checked + label {
     width: 600px;
     transition: all 0.3s ease-in;
